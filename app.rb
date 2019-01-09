@@ -11,14 +11,15 @@ class App < Sinatra::Base
    "#{@result}"
   end
   get '/say/:number/:phrase' do
-    saying = (params[:phrase])
-    @say = saying.repeat((params[:number]).to_i)
+    saying = params[:phrase]
+    @say = saying * (params[:number].to_i)
     "Say #{@say}"
   end
   get '/say/:word1/:word2/:word3/:word4/:word5' do
-    @repeat = params[:word1] + params[:word2] + params[:word3] + params[:word4] + params[:word5]
-  "Say #{@repeat}."
+    @repeat = [params[:word1], params[:word2],  params[:word3], params[:word4], params[:word5]].join + ('.')
+    "Say #{@repeat}"
   end
   get '/:operation/:number1/:number2' do
+
   end
 end
