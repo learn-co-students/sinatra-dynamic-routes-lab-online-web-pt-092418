@@ -20,6 +20,21 @@ class App < Sinatra::Base
     "Say #{@repeat}"
   end
   get '/:operation/:number1/:number2' do
-
+   @num1 = params[:number1].to_i
+   @num2 = params[:number2].to_i
+   @operator = params[:operation].to_s
+      if @operator == "add"
+       @sum =  @num1 + @num2
+       "#{@sum}"
+    elsif @operator == "subtract"
+      @sub = @num1 - @num2
+      "#{@sub}"
+    elsif @operator == "multiply"
+      @multi = @num1 * @num2
+      "#{@multi}"
+    else
+      @div = @num1/ @num2
+      "#{@div}"
+    end
   end
 end
