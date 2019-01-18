@@ -3,13 +3,13 @@ require_relative 'config/environment'
 class App < Sinatra::Base
 
   get '/reversename/:name' do
-    @reversename = params[:name]
-    @reversename.reverse
+    @name = params[:name]
+    "#{@name.reverse}"
   end
 
   get '/square/:number' do
     @number = params[:number]
-    "#{@number.to_i * @number.to_i}"
+    "#{params[:number].to_i * params[:number].to_i}"
   end
 
   get '/say/:number/:phrase' do
@@ -24,7 +24,6 @@ class App < Sinatra::Base
     @word3 = params[:word3]
     @word4 = params[:word4]
     @word5 = params[:word5]
-
     "#{@word1} #{@word2} #{@word3} #{@word4} #{@word5}."
   end
 
@@ -32,7 +31,6 @@ class App < Sinatra::Base
     @operation = params[:operation]
     @number1 = params[:number1].to_i
     @number2 = params[:number2].to_i
-
     case @operation
       when "add"
         "#{@number1 + @number2}"
@@ -42,6 +40,7 @@ class App < Sinatra::Base
         "#{@number1 * @number2}"
       when "divide"
         "#{@number1 / @number2}"
+      end
     end
-  end
+
 end
